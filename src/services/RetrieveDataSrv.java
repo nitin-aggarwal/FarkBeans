@@ -55,7 +55,7 @@ public class RetrieveDataSrv extends BaseSrv {
        System.out.println(tagConditions);
        
        query = getEntityManger().createQuery("Select st FROM "+ tableName+" st WHERE st.farkTag IN ("+tagConditions+") and st.articleContent is NOT NULL");
-       query.setMaxResults(1);
+       //query.setMaxResults(1);
        
        @SuppressWarnings("unchecked")
        List<AbstractDB> articleList = query.getResultList();
