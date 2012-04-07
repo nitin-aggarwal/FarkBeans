@@ -20,6 +20,7 @@ public class RetrieveDataSrv extends BaseSrv {
        {
            query = getEntityManger().createQuery("SELECT article FROM "+ tableName+" st where sourceURL="+site);
        }
+       @SuppressWarnings("unchecked")
        List<AbstractDB> articleList = query.getResultList();
        return articleList;
    }
@@ -29,6 +30,7 @@ public class RetrieveDataSrv extends BaseSrv {
        Query query = null;
        query = getEntityManger().createQuery("Select st FROM "+ tableName+" st WHERE st.farkTag='"+tag+"' and st.articleContent is NULL");
       // query.setMaxResults(10);
+       @SuppressWarnings("unchecked")
        List<AbstractDB> articleList = query.getResultList();
        return articleList;
    }
@@ -37,9 +39,28 @@ public class RetrieveDataSrv extends BaseSrv {
    {
 	   Query query = null;
        query = getEntityManger().createQuery("Select st FROM "+ tableName+" st WHERE st.farkTag='"+tag+"' and st.sourceURL='"+site+"'");
+       @SuppressWarnings("unchecked")
        List<AbstractDB> articleList = query.getResultList();
        return articleList;
 	   
    }
    
+   public static List<AbstractDB> retrieveRecords(String tableName, String[] tags)
+   {
+       Query query = null;
+       StringBuilder tagConditions = new StringBuilder();
+       for(String s: tags)
+    	   tagConditions.append("'"+s+"',");
+       tagConditions.setLength(tagConditions.length()-1);
+       System.out.println(tagConditions);
+       
+       query = getEntityManger().createQuery("Select st FROM "+ tableName+" st WHERE st.farkTag IN ("+tagConditions+") and st.articleContent is NOT NULL");
+       query.setMaxResults(1);
+       
+       @SuppressWarnings("unchecked")
+       List<AbstractDB> articleList = query.getResultList();
+       return articleList;
+   }
+   
 }
+
