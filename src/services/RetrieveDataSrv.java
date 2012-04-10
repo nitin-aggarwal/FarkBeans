@@ -3,7 +3,6 @@ package services;
 import java.util.List;
 
 import javax.persistence.Query;
-
 import entities.AbstractDB;
 
 
@@ -55,7 +54,7 @@ public class RetrieveDataSrv extends BaseSrv {
        System.out.println(tagConditions);
        
        query = getEntityManger().createQuery("Select st FROM "+ tableName+" st WHERE st.farkTag IN ("+tagConditions+
-    		   ") and st.articleContent is NOT NULL and st.id <= 10");
+    		   ") and st.articleContent is NOT NULL");
        //query.setMaxResults(1);
        
        @SuppressWarnings("unchecked")
