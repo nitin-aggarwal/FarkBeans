@@ -62,5 +62,14 @@ public class RetrieveDataSrv extends BaseSrv {
        return articleList;
    }
    
+   public static List<Integer> retrieveAttr(String tableName, String attribute)
+   {
+       Query query = null;
+       query = getEntityManger().createQuery("Select "+attribute+" FROM "+ tableName+" st");
+       @SuppressWarnings("unchecked")
+       List<Integer> listIds = query.getResultList();
+       return listIds;
+   }
+   
 }
 
