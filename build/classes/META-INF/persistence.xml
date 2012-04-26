@@ -6,6 +6,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>entities.ArticleDetails</class>
 		<class>entities.ParseDetails</class>
+		<class>entities.CohesionDetails</class>
 		<properties>
 			<property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1/FarkDetails" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
