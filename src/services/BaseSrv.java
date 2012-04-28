@@ -19,7 +19,7 @@ public class BaseSrv {
 	{
 		if(em == null)
 		{
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("rm");
 			em = emf.createEntityManager();
 		}
 		return em;

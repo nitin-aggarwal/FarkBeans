@@ -9,6 +9,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name="CohesionDetails")
 public class CohesionDetails extends AbstractDB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
