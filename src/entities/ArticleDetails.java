@@ -14,7 +14,6 @@ public class ArticleDetails extends AbstractDB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
     @Lob()
@@ -35,6 +34,16 @@ public class ArticleDetails extends AbstractDB implements Serializable {
 	private String sourceName;
 
 	private String sourceURL;
+
+	//bi-directional one-to-one association to CohesionDetails
+	@OneToOne
+	@JoinColumn(name="id")
+	private CohesionDetails cohesionDetail;
+
+	//bi-directional one-to-one association to ParseDetails
+	@OneToOne
+	@JoinColumn(name="id",insertable=false,updatable=false)
+	private ParseDetails parseDetail;
 
     public ArticleDetails() {
     }
@@ -118,11 +127,21 @@ public class ArticleDetails extends AbstractDB implements Serializable {
 	public void setSourceURL(String sourceURL) {
 		this.sourceURL = sourceURL;
 	}
-	
-	public String toString()
-	{
-		return "[ Article URL: "+ this.getArticleURL() + "   Fark Headline:"+ this.getFarkHeadline() +"     Source: " + this.getSourceName() + "    FarkCategory:"+ this.getFarkCategory()
-					+ "   Fark Tag: " + this.getFarkTag() + "    Comments : " + this.getNumberOfComments() +"]";
+
+	public CohesionDetails getCohesionDetail() {
+		return this.cohesionDetail;
 	}
 
+	public void setCohesionDetail(CohesionDetails cohesionDetail) {
+		this.cohesionDetail = cohesionDetail;
+	}
+	
+	public ParseDetails getParseDetail() {
+		return this.parseDetail;
+	}
+
+	public void setParseDetail(ParseDetails parseDetail) {
+		this.parseDetail = parseDetail;
+	}
+	
 }

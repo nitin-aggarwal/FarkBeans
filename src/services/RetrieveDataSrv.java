@@ -62,6 +62,23 @@ public class RetrieveDataSrv extends BaseSrv {
        return articleList;
    }
    
+   public static List<AbstractDB> retrieveDBRecords(String tableName, String[] tags)
+   {
+       Query query = null;
+       StringBuilder tagConditions = new StringBuilder();
+       for(String s: tags)
+    	   tagConditions.append("'"+s+"',");
+       tagConditions.setLength(tagConditions.length()-1);
+       System.out.println(tagConditions);
+       
+       query = getEntityManger().createQuery("Select st FROM "+ tableName+" st WHERE st.id > 0");
+       //query.setMaxResults(1);
+       
+       @SuppressWarnings("unchecked")
+       List<AbstractDB> articleList = query.getResultList();
+       return articleList;
+   }
+   
    public static List<Integer> retrieveAttr(String tableName, String attribute)
    {
        Query query = null;

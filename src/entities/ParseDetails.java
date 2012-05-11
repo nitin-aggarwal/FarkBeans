@@ -34,6 +34,10 @@ public class ParseDetails extends AbstractDB implements Serializable {
 
 	private double verbPhrases;
 
+	//bi-directional one-to-one association to ArticleDetails
+	@OneToOne(mappedBy="parseDetail")
+	private ArticleDetails articleDetail;
+
     public ParseDetails() {
     }
 
@@ -117,4 +121,12 @@ public class ParseDetails extends AbstractDB implements Serializable {
 		this.verbPhrases = verbPhrases;
 	}
 
+	public ArticleDetails getArticleDetail() {
+		return this.articleDetail;
+	}
+
+	public void setArticleDetail(ArticleDetails articleDetail) {
+		this.articleDetail = articleDetail;
+	}
+	
 }

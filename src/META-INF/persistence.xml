@@ -2,8 +2,8 @@
 	<persistence version="1.0"	xmlns="http://java.sun.com/xml/ns/persistence">
 	<persistence-unit name="rm">
 		<provider>oracle.toplink.essentials.ejb.cmp3.EntityManagerFactoryProvider</provider>
-		<class>entities.ArticleDetails</class>
 		<class>entities.ParseDetails</class>
+		<class>entities.ArticleDetails</class>
 		<class>entities.CohesionDetails</class>
 		<!-- <properties> -->
 		<!-- <property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1/FarkDetails" 

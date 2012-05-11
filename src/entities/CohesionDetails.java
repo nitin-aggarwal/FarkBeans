@@ -28,6 +28,10 @@ public class CohesionDetails extends AbstractDB implements Serializable {
 
 	private int wordISW;
 
+	//bi-directional one-to-one association to ArticleDetails
+	@OneToOne(mappedBy="cohesionDetail")
+	private ArticleDetails articleDetail;
+
     public CohesionDetails() {
     }
 
@@ -87,4 +91,12 @@ public class CohesionDetails extends AbstractDB implements Serializable {
 		this.wordISW = wordISW;
 	}
 
+	public ArticleDetails getArticleDetail() {
+		return this.articleDetail;
+	}
+
+	public void setArticleDetail(ArticleDetails articleDetail) {
+		this.articleDetail = articleDetail;
+	}
+	
 }
